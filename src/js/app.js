@@ -1,6 +1,6 @@
 import 'jquery';
 import Model from '../assets/test_guy.gif';
-import Contact from '../assets/contact.svg';
+import Contact from '../assets/contact_large.svg';
 // import 'bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -57,7 +57,8 @@ const moveText = () => {
         });
 
     } else if (scrollTop > 1850 && scrollTop < $(".project-3").position().top + $(".project-3").height()){
-
+        
+        $('.contact-title').css('display', 'none');
         $('#last-proj').removeClass("last-proj-fixed");
         $('.intro-container').css('display', 'none');
         $('.projects-title').css('display', 'none');
@@ -65,70 +66,43 @@ const moveText = () => {
 
     } else if (scrollTop >= $(".project-3").position().top + $(".project-3").height()){
 
+        $('.contact-title').css('display', 'block');
         $('.projects-handle').css('display', 'none');
         $('.intro-container').css('display', 'none');
         $('#last-proj').addClass("last-proj-fixed");
-
-        // let width;
-
-        // if ($('.contact-title').width()/$(window).width()*100 > 350) {
-            // let width = 2300 - ((scrollTop - ($(".project-3").position().top + $(".project-3").height()))/16)*(8 + Math.sqrt(Math.sqrt($('.contact-title').width())));
-        // } 
-        // else
-        // let width = 2300 - ((scrollTop - ($(".project-3").position().top + $(".project-3").height()))/16)*16;
 
         let scrollSinceProject = (scrollTop - ($(".project-3").position().top + $(".project-3").height()));
         let width;
         let left;
         let top;
 
-        width = 2300 - scrollSinceProject*1.4;
+        width = 5800 - scrollSinceProject*(5+(100*(1/scrollSinceProject)));
+        left = 0.07241*width + scrollSinceProject/27;
+        top = scrollSinceProject/23;
 
-        // if (width <= 35){console.log(scrollTop)};
-
-        if (width < 35){
-            width = 35;
-        }
-
-        left = 0.23913*width + scrollSinceProject/39;
-        top = 60 - scrollSinceProject/39;
-
-        if (scrollSinceProject >= 1600){
+        if (width < 100){
+            width = 100;
             left = 50;
+            top = 50;
         }
 
-        console.log(scrollSinceProject/39);
+        if (scrollSinceProject > 1000){
+            $('.contact-page-bg').css('opacity', '1');
+            top = 75 - scrollSinceProject/30;
+            if (top > 50) {
+                top = 50;
+            } else if (top < 12){
+                console.log($('.contact-title').position().top); //1910
+                console.log(scrollSinceProject);
+                top = 12;
+            }
+        } else $('.contact-page-bg').css('opacity', '0');
 
-
-        // if (left <= 50){
-        //     console.log((scrollTop - ($(".project-3").position().top + $(".project-3").height())));
-        // }
-
-
-
-        // console.log("LEFT: " + (0.19565*width + (scrollTop - ($(".project-3").position().top + $(".project-3").height()))/39));
-        // console.log((scrollTop - ($(".project-3").position().top + $(".project-3").height()))/39);
-
-        // console.log($('.contact-title').width());
-
-        
-        // times a modifier based on contact width that starts at 8 and exponentially decreases.
-
-        // console.log(2300 - ((scrollTop - ($(".project-3").position().top + $(".project-3").height()))/16)*8);
-        // console.log(Math.sqrt(Math.sqrt($('.contact-title').width())));
-        // console.log(width);
-
-        // console.log($('.contact-title').width());
-
-        // console.log("TOP: " + (scrollTop - ($(".project-3").position().top + $(".project-3").height()))/16);
-        // console.log("BOTTOM: " + (Math.sqrt(Math.sqrt(scrollTop))));
-
-        // console.log($('.contact-title').width()/$(window).width()*100);
 
         $('.contact-title').css({
             'width': width + 'vw',
             'left': left + 'vw',
-            // 'top': top + '%',
+            'top': top + '%',
         });
     }
 
