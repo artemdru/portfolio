@@ -17,9 +17,37 @@ body {
 	background-color: transparent;
 }
 
+.small-intro-container{
+	// display: none;
+	position: fixed;
 
+	left: 50%;
+	top: 50%;
+	
+	margin-left: -75vw;
+	margin-top: -50vh;
+	width: 100vw;
+	height: 100vh;
+
+		#small-intro-text-container{
+			height: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+				.small-intro-text{
+					display: block;
+					text-align: left;
+					right: 12%;
+
+					font-size: 5vw;
+				}
+		}
+}
 
 .intro-container{
+	// opacity: 1;
 	position: fixed;
 	left: 50%;
 	top: 50%;
@@ -63,7 +91,7 @@ body {
 					justify-content: center;
 					
 						.intro-text{
-							display: inline-block;
+							display: block;
 							text-align: left;
 							right: 12%;
 

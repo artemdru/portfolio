@@ -9,10 +9,13 @@ import '../css/test.scss';
 const moveText = () => {
     let scrollTop = $('html').scrollTop();
 
+    console.log(scrollTop);
+
     if (scrollTop < 900){
         $('.contact-title').css('display', 'none');
         $('.contact-page-bg').css('opacity', '0');
-        $('.intro-container').css('display', 'block');
+        $('.intro-container').css('display', 'block');        
+        $('.small-intro-container').css('display', 'block');
         $('.projects-title').css('display', 'none');
         $('.projects-title').css('left', '-50%');
 
@@ -26,6 +29,13 @@ const moveText = () => {
             'margin-top': newPos+'vh'
         });
 
+        $('.small-intro-container').css({
+            'width': newScale*1.5+'vw', 
+            'height': newScale*1.5+'vh',
+            // 'margin-left': newPos*1.5+'vw',
+            'margin-top': newPos*1.5+'vh',
+        });
+
         resizeText();
 
         //TODO: Optimize for 4k
@@ -33,19 +43,19 @@ const moveText = () => {
             $('.intro-container').css('display', 'none');
         }
 
-        // $('.model').css('width', 400 + scrollTop); 
         $('.model').css('width', (25 + scrollTop/10) + 'vw');
         $('.model-small').css('width', (40 + scrollTop/10) + 'vh'); 
 
     } else if (scrollTop > 900 && scrollTop <= 1850){
 
-        console.log($(window).width());
+        // console.log($(window).width());
 
         $('.contact-title').css('display', 'none');
         $('.contact-page-bg').css('opacity', '0');
         $('.projects-title').css('display', 'block');
         $('.projects-handle').css('display', 'none');
         $('.intro-container').css('display', 'none');
+        $('.small-intro-container').css('display', 'none');
 
         let left;
         let top;
@@ -77,6 +87,7 @@ const moveText = () => {
         $('.contact-title').css('display', 'none');
         $('#last-proj').removeClass("last-proj-fixed");
         $('.intro-container').css('display', 'none');
+        $('.small-intro-container').css('display', 'none');
         $('.projects-title').css('display', 'none');
         $('.projects-handle').css('display', 'block');
 
@@ -85,6 +96,7 @@ const moveText = () => {
         $('.contact-title').css('display', 'block');
         $('.projects-handle').css('display', 'none');
         $('.intro-container').css('display', 'none');
+        $('.small-intro-container').css('display', 'none');
         $('#last-proj').addClass("last-proj-fixed");
 
         let scrollSinceProject = (scrollTop - ($(".project-3").position().top + $(".project-3").height()));
@@ -142,13 +154,10 @@ const resizeText = () => {
 
     if (aspectRatio < 1.35){
         $('.intro-text').css('font-size', 25 + $('#intro-text-container').width()*0.1);
+        $('.small-intro-text').css('font-size', 25 + $('#small-intro-text-container').width()*0.05);
     } else if (aspectRatio > 2.2){
         $('.intro-text').css('font-size', $('#intro-text-container').width()*0.05);
     } else $('.intro-text').css('font-size', $('#intro-text-container').width()*0.1);
-}
-
-const resizeModel = () => {
-
 }
 
 const renderModel = () => {
@@ -157,7 +166,7 @@ const renderModel = () => {
     $(".contact-title").attr({src: Contact});
 }
 
-resizeText();
+// resizeText();
 renderModel();
 moveText();
 

@@ -3,13 +3,39 @@
 		display: none;
 	}
 
-	.intro-container{
+	.small-intro-container{
 		opacity: 0;
+	}
+
+	.intro-container{
+		display: block;
+		opacity: 1;
 	}
 }
 
 @media screen and (min-aspect-ratio: 4/3){
 	.model-small{
 		display: none;
+	}
+
+	.small-intro-container{
+		opacity: 0;
+	}
+
+	.intro-container{
+		display: block;
+		opacity: 1;
+	}
+}
+
+@media screen and (max-aspect-ratio: 2/3){
+	.small-intro-container{
+		display: block;
+		opacity: 1;
+	}
+
+
+	.intro-container{
+		opacity: 0;
 	}
 }
