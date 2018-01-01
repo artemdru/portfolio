@@ -18,6 +18,7 @@ const moveText = () => {
         $('.small-intro-container').css('display', 'block');
         $('.projects-title').css('display', 'none');
         $('.projects-title').css('left', '-50%');
+        $('.projects-handle').css('display', 'none');
 
         let newScale = 100+ scrollTop/2.2;
         let newPos = -1*(newScale/2);
@@ -39,14 +40,14 @@ const moveText = () => {
         resizeText();
 
         //TODO: Optimize for 4k
-        if ($(window).width() > 1850 && scrollTop > 650){
+        if ($(window).width() > 1950 && scrollTop > 650){
             $('.intro-container').css('display', 'none');
         }
 
         $('.model').css('width', (25 + scrollTop/10) + 'vw');
         $('.model-small').css('width', (40 + scrollTop/10) + 'vh'); 
 
-    } else if (scrollTop > 900 && scrollTop <= 1850){
+    } else if (scrollTop > 900 && scrollTop <= 1950){
 
         // console.log($(window).width());
 
@@ -61,13 +62,15 @@ const moveText = () => {
         let top;
         let fontSize;
 
-        if (scrollTop<=1500){
+        if (scrollTop<=1950){
             top = 50;
             fontSize = 15;
-            left = (scrollTop-1100)/8;
+            left = (scrollTop-1400)/8;
+            if (left > 50){left = 50;}
 
-        } else if (scrollTop>1500 && scrollTop<=1850){
-            left = 50;
+        }
+
+        if (scrollTop>1500 && scrollTop<=1950){
             top = 50-(scrollTop-1500)/8;
             fontSize = 15-(scrollTop-1500)/24;
 
@@ -82,14 +85,14 @@ const moveText = () => {
             'font-size': fontSize + 'vmax',
         });
 
-    } else if (scrollTop > 1850 && scrollTop < $(".project-3").position().top + $(".project-3").height()){
+    } else if (scrollTop > 1950 && scrollTop < $(".project-3").position().top + $(".project-3").height()){
 
         $('.contact-title').css('display', 'none');
         $('#last-proj').removeClass("last-proj-fixed");
         $('.intro-container').css('display', 'none');
         $('.small-intro-container').css('display', 'none');
         $('.projects-title').css('display', 'none');
-        $('.projects-handle').css('display', 'block');
+        // $('.projects-handle').css('display', 'block');
 
     } else if (scrollTop >= $(".project-3").position().top + $(".project-3").height()){
 
