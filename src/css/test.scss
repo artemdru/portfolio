@@ -1,6 +1,7 @@
 @import "colors";
 @import "mixins";
 @import "screens";
+@import "typography";
 // @import "~bootstrap/scss/bootstrap";
 
 body {
@@ -18,7 +19,6 @@ body {
 }
 
 .small-intro-container{
-	// display: none;
 	position: fixed;
 
 	left: 50%;
@@ -47,7 +47,6 @@ body {
 }
 
 .intro-container{
-	// opacity: 1;
 	position: fixed;
 	left: 50%;
 	top: 50%;
@@ -62,7 +61,7 @@ body {
 		.row{
 			height: 100%;
 			width: 100%;
-			max-width: 10000px !important;
+			max-width: 30000px !important;
 
 				#model-container{
 					height: 100%;
@@ -88,12 +87,13 @@ body {
 
 					display: flex;
 					align-items: center;
-					justify-content: center;
+					// justify-content: center;
 					
 						.intro-text{
 							display: block;
-							text-align: left;
-							right: 12%;
+							// text-align: left;
+							// right: 12%;
+							position: relative;
 
 							font-size: 5vw;
 						}

@@ -1,0 +1,46 @@
+@font-face{
+	font-family: HelvLight;
+	src: url(../assets/HELN.ttf) format('ttf');
+}
+
+.intro-thin{
+	font-family: HelvLight;
+	text-align: left;
+	margin-left: 18%;
+	font-size: 3vw;
+	line-height: 90%;
+}
+
+.intro-artem{
+	text-align: left;
+	margin-left: 18%;
+	font-size: 6vw;
+	line-height: 70%;
+	font-weight: 700;
+		.text{
+			position: relative;
+			left: -10vw;
+		}
+}
+
+.intro-druzhkov{
+	text-align: left;
+	margin-left: 18%;
+	font-size: 6vw;
+	line-height: 75%;
+	font-weight: 700;
+		.text{
+			position: relative;
+			left: 2vw;
+		}
+}
+
+.intro-med{
+	text-align: left;
+	margin-left: 18%;
+	font-size: 5vw;
+		.text{
+			position: relative;
+			left: -5vw;
+		}
+}

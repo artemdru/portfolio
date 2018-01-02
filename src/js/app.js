@@ -9,8 +9,6 @@ import '../css/test.scss';
 const moveText = () => {
     let scrollTop = $('html').scrollTop();
 
-    console.log(scrollTop);
-
     if (scrollTop < 900){
         $('.contact-title').css('display', 'none');
         $('.contact-page-bg').css('opacity', '0');
@@ -20,7 +18,7 @@ const moveText = () => {
         $('.projects-title').css('left', '-50%');
         $('.projects-handle').css('display', 'none');
 
-        let newScale = 100+ scrollTop/2.2;
+        let newScale = 100+ scrollTop/1.2;
         let newPos = -1*(newScale/2);
 
         $('.intro-container').css({
@@ -40,9 +38,9 @@ const moveText = () => {
         resizeText();
 
         //TODO: Optimize for 4k
-        if ($(window).width() > 1950 && scrollTop > 650){
-            $('.intro-container').css('display', 'none');
-        }
+        // if ($(window).width() > 1950 && scrollTop > 650){
+        //     $('.intro-container').css('display', 'none');
+        // }
 
         $('.model').css('width', (25 + scrollTop/10) + 'vw');
         $('.model-small').css('width', (40 + scrollTop/10) + 'vh'); 
@@ -155,12 +153,32 @@ const moveText = () => {
 const resizeText = () => {
     let aspectRatio = $('.intro-container').width()/$('.intro-container').height();
 
-    if (aspectRatio < 1.35){
-        $('.intro-text').css('font-size', 25 + $('#intro-text-container').width()*0.1);
-        $('.small-intro-text').css('font-size', 25 + $('#small-intro-text-container').width()*0.05);
+    console.log(aspectRatio);
+
+    if (aspectRatio <= 2/3){
+        $('.intro-thin').css('font-size', $('#small-intro-text-container').width()*0.03);
+        $('.intro-med').css('font-size', $('#small-intro-text-container').width()*0.06);
+        $('.intro-artem').css('font-size', $('#small-intro-text-container').width()*0.08);
+        $('.intro-druzhkov').css('font-size', $('#small-intro-text-container').width()*0.08);
+
+    } else if (aspectRatio > 2/3 && aspectRatio < 1.35) {
+        $('.intro-thin').css('font-size', $('#small-intro-text-container').width()*0.025);
+        $('.intro-med').css('font-size', $('#small-intro-text-container').width()*0.035);
+        $('.intro-artem').css('font-size', $('#small-intro-text-container').width()*0.04);
+        $('.intro-druzhkov').css('font-size', $('#small-intro-text-container').width()*0.04);
+
     } else if (aspectRatio > 2.2){
-        $('.intro-text').css('font-size', $('#intro-text-container').width()*0.05);
-    } else $('.intro-text').css('font-size', $('#intro-text-container').width()*0.1);
+        $('.intro-thin').css('font-size', $('#intro-text-container').width()*0.03);
+        $('.intro-med').css('font-size', $('#intro-text-container').width()*0.05);
+        $('.intro-artem').css('font-size', $('#intro-text-container').width()*0.06);
+        $('.intro-druzhkov').css('font-size', $('#intro-text-container').width()*0.06);
+        
+    } else {
+        $('.intro-thin').css('font-size', $('#intro-text-container').width()*0.06);
+        $('.intro-med').css('font-size', $('#intro-text-container').width()*0.1);
+        $('.intro-artem').css('font-size', $('#intro-text-container').width()*0.12);
+        $('.intro-druzhkov').css('font-size', $('#intro-text-container').width()*0.12);
+    }
 }
 
 const renderModel = () => {
@@ -169,7 +187,7 @@ const renderModel = () => {
     $(".contact-title").attr({src: Contact});
 }
 
-// resizeText();
+resizeText();
 renderModel();
 moveText();
 
