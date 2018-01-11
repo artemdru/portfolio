@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">	
 <meta charset="UTF-8">
 <meta name="viewport"
 content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -11,6 +9,12 @@ content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=
 <title>Webpack 2 Basics</title>
 </head>
 <body>
+
+	<div class="bg" id="green"></div>
+	<div class="bg" id="silver"></div>
+	<div class="bg" id="purple"></div>
+	<div class="bg" id="blue"></div>
+
 	<div class="small-intro-container">
 		<div id="small-intro-text-container">
 			<div style="text-align: center;">
@@ -84,16 +88,398 @@ content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=
 			<div class="projects-handle" align="center">Projects</div>
 		</div>
 
-		<div class="project-1"></div>
-		<div class="project-2"></div>
-		<div class="project-3"></div>
-		<div class="project-4" id="last-proj"></div>
+		<div class="project project-1">
+			<div class="carousel">
+				<div id="desc" class="carousel-cell" align="center">
+					<div style="width: 60%; max-width: 100%;">
+						<img src="" class="draggr-logo" alt="draggr logo">
+						<h2><a href="https://draggr.io">LINK</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/artemdru/draggr">GITHUB</a></h2>					
+						<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+						&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+						&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+					</div>
+				</div>
+
+				<div id="pic" class="carousel-cell">
+					<figure>
+						<img src="" class="draggr-proj" alt="draggr screen">
+						<div align="right">
+							<figcaption>
+								<p>&nbsp;&nbsp;&nbsp;Current build of the app. Task completion (the tasks faded out, with a checkmark at the top left) is used as a tool for gratification - seeing the work you've finished!</p>
+							</figcaption>
+						</div>
+					</figure>
+				</div>
+
+				<div id="tech" class="carousel-cell" align="center">
+					<div class="tech-container">
+						<h1>What I used:</h1>
+						<div class="tech-list">
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo html-logo" alt="HTML5">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo css-logo" alt="CSS3">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo angular-logo" alt="Angular">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo javascript-logo" alt="JavaScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo typescript-logo" alt="TypeScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo es6-logo" alt="ES6">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo npm-logo" alt="NPM">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo git-logo" alt="Git">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo firebase-logo" alt="Firebase">
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div id="learned" class="carousel-cell" align="center">
+					<div class="learned-container">
+						<h1>What I learned:</h1>
+						<div style="width: 60%;">
+							<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+							&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+							&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project project-2">
+			<div class="carousel">
+				<div id="desc" class="carousel-cell" align="center">
+					<div style="width: 60%; max-width: 100%;">
+						<img src="" class="draggr-logo" alt="draggr logo">
+						<h2><a href="https://draggr.io">LINK</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/artemdru/draggr">GITHUB</a></h2>					
+						<p><br><br>
+
+						&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+					</div>
+				</div>
+
+				<div id="pic" class="carousel-cell">
+					<figure>
+						<img src="" class="draggr-proj" alt="draggr screen">
+						<div align="right">
+							<figcaption>
+								<p>&nbsp;&nbsp;&nbsp;Current build of the app. Task completion (the tasks faded out, with a checkmark at the top left) is used as a tool for gratification - seeing the work you've finished!</p>
+							</figcaption>
+						</div>
+					</figure>
+				</div>
+
+				<div id="tech" class="carousel-cell" align="center">
+					<div class="tech-container">
+						<h1>What I used:</h1>
+						<div class="tech-list">
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo html-logo" alt="HTML5">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo css-logo" alt="CSS3">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo angular-logo" alt="Angular">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo javascript-logo" alt="JavaScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo typescript-logo" alt="TypeScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo es6-logo" alt="ES6">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo npm-logo" alt="NPM">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo git-logo" alt="Git">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo firebase-logo" alt="Firebase">
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div id="learned" class="carousel-cell" align="center">
+					<div class="learned-container">
+						<h1>What I learned:</h1>
+						<div style="width: 60%;">
+							<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+							&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+							&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project project-3">
+			<div class="carousel">
+				<div id="desc" class="carousel-cell" align="center">
+					<div style="width: 60%; max-width: 100%;">
+						<img src="" class="draggr-logo" alt="draggr logo">
+						<h2><a href="https://draggr.io">LINK</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/artemdru/draggr">GITHUB</a></h2>					
+						<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+						&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+						&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+					</div>
+				</div>
+
+				<div id="pic" class="carousel-cell">
+					<figure>
+						<img src="" class="draggr-proj" alt="draggr screen">
+						<div align="right">
+							<figcaption>
+								<p>&nbsp;&nbsp;&nbsp;Current build of the app. Task completion (the tasks faded out, with a checkmark at the top left) is used as a tool for gratification - seeing the work you've finished!</p>
+							</figcaption>
+						</div>
+					</figure>
+				</div>
+
+				<div id="tech" class="carousel-cell" align="center">
+					<div class="tech-container">
+						<h1>What I used:</h1>
+						<div class="tech-list">
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo html-logo" alt="HTML5">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo css-logo" alt="CSS3">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo angular-logo" alt="Angular">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo javascript-logo" alt="JavaScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo typescript-logo" alt="TypeScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo es6-logo" alt="ES6">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo npm-logo" alt="NPM">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo git-logo" alt="Git">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo firebase-logo" alt="Firebase">
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div id="learned" class="carousel-cell" align="center">
+					<div class="learned-container">
+						<h1>What I learned:</h1>
+						<div style="width: 60%;">
+							<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+							&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+							&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project project-4" id="last-proj">
+			<div class="carousel">
+				<div id="desc" class="carousel-cell" align="center">
+					<div style="width: 60%; max-width: 100%;">
+						<img src="" class="draggr-logo" alt="draggr logo">
+						<h2><a href="https://draggr.io">LINK</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/artemdru/draggr">GITHUB</a></h2>					
+						<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+						&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+						&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+					</div>
+				</div>
+
+				<div id="pic" class="carousel-cell">
+					<figure>
+						<img src="" class="draggr-proj" alt="draggr screen">
+						<div align="right">
+							<figcaption>
+								<p>&nbsp;&nbsp;&nbsp;Current build of the app. Task completion (the tasks faded out, with a checkmark at the top left) is used as a tool for gratification - seeing the work you've finished!</p>
+							</figcaption>
+						</div>
+					</figure>
+				</div>
+
+				<div id="tech" class="carousel-cell" align="center">
+					<div class="tech-container">
+						<h1>What I used:</h1>
+						<div class="tech-list">
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo html-logo" alt="HTML5">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo css-logo" alt="CSS3">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo angular-logo" alt="Angular">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo javascript-logo" alt="JavaScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo typescript-logo" alt="TypeScript">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo es6-logo" alt="ES6">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo npm-logo" alt="NPM">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo git-logo" alt="Git">
+							</div>
+
+							<div class="tech-logo-overlay">
+								<img src="" class="tech-logo firebase-logo" alt="Firebase">
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div id="learned" class="carousel-cell" align="center">
+					<div class="learned-container">
+						<h1>What I learned:</h1>
+						<div style="width: 60%;">
+							<p>&nbsp;&nbsp;&nbsp;draggr is a drag-and-drop personal scheduling tool app built in Angular. Unlike other scheduling tools, the tasks on your calendar are completely malleable: resizable, moveable, with tasks moving themselves automagically when needed. Rescheduling one task doesn’t mean rescheduling the whole day! <br><br>
+
+							&nbsp;&nbsp;&nbsp;I focused on creating a smooth UI that, with further development, will lend itself to gamification of users productivity.<br><br>
+
+							&nbsp;&nbsp;&nbsp;Currently, I consider it in an early-alpha stage. I’ve made it open-source, and plan on developing a whole array of features in the future. Very much aiming towards something I would find useful for daily use myself.</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<div class="scroller"></div>
 	<div class="mover"></div>
+
 	<div class="contact-page-bg"></div>
 	<img src="" alt="" class="contact-title">
+
+	<div class="contact-form-container">
+		<div>
+
+			<div align="center" class="img-container">
+				
+				<a href="https://draggr.io">
+					<div id="resume">
+						<img src="" alt="Resume" class="resume">
+						<p>Resume</p>
+					</div>
+				</a>
+
+				
+					<div id="linkedin" style="width: 20%; text-align: center;">
+						<a href="https://www.linkedin.com/in/artemdruzhkov/">
+							<img src="" alt="LinkedIn" class="linkedin">
+							<p>LinkedIn</p>
+							
+						</a>
+					</div>
+				
+
+				<a href="https://github.com/artemdru">
+					<div id="github">
+						<img src="" alt="GitHub" class="github">
+						<p>GitHub</p>
+					</div>
+				</a>				
+
+			</div>
+
+			<form method="POST" action="http://formspree.io/hudoij01@yandex.ru">
+
+				
+				<div class="form-group">
+				  	<input class="form-control" type="email" class="form-control" name="email" placeholder="Email">
+				</div>
+				
+				<div class="form-group">
+					<textarea class="form-control" name="message" placeholder="Your message" rows="5"></textarea>
+				</div>
+
+				<div align="center">
+					<button type="submit" class="btn btn-primary">Send</button>				
+				</div>
+			</form>
+
+		</div>
+		
+	</div>
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>

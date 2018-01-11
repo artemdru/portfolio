@@ -1,15 +1,44 @@
 import 'jquery';
 import Model from '../assets/test_guy.gif';
+import Draggr from '../assets/draggr.svg';
+import DraggrProj from '../assets/draggr-proj.png';
+import Twitch from '../assets/twitch.png';
+
+import Angular from '../assets/tech/angular.svg';
+import CSS from '../assets/tech/css.svg';
+import ES6 from '../assets/tech/es6.svg';
+import Firebase from '../assets/tech/firebase.svg';
+import Git from '../assets/tech/git.svg';
+import HTML from '../assets/tech/html.svg';
+import JavaScript from '../assets/tech/javascript.svg';
+import JSON from '../assets/tech/json.svg';
+import NPM from '../assets/tech/npm.svg';
+import Sass from '../assets/tech/sass.svg';
+import TypeScript from '../assets/tech/typescript.svg';
+import Webpack from '../assets/tech/webpack.svg';
+
 import Contact from '../assets/contact_large.svg';
+import Resume from '../assets/resume.svg';
+import Github from '../assets/github.svg';
+import Linkedin from '../assets/linkedin.svg';
+
 // import 'bootstrap';
+// import 'bootstrap/dist/js/bootstrap.min.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
+import './projects.js';
 import '../css/test.scss';
 
 const moveText = () => {
     let scrollTop = $('html').scrollTop();
+    let aspectRatio = $('.intro-container').width()/$('.intro-container').height();
+    let projectsModif = 1;
 
-    if (scrollTop < 900){
+    if (aspectRatio > 2/3 && aspectRatio < 4/3){projectsModif = 1.5};
+
+    if (scrollTop < 500*projectsModif){
         $('.contact-title').css('display', 'none');
         $('.contact-page-bg').css('opacity', '0');
         $('.intro-container').css('display', 'block');        
@@ -45,9 +74,9 @@ const moveText = () => {
         $('.model').css('width', (25 + scrollTop/10) + 'vw');
         $('.model-small').css('width', (40 + scrollTop/10) + 'vh'); 
 
-    } else if (scrollTop > 900 && scrollTop <= 1950){
+    } else if (scrollTop > 500*projectsModif && scrollTop <= 1950){
 
-        // console.log($(window).width());
+        bgChange(scrollTop);
 
         $('.contact-title').css('display', 'none');
         $('.contact-page-bg').css('opacity', '0');
@@ -59,13 +88,17 @@ const moveText = () => {
         let left;
         let top;
         let fontSize;
+        let projOpacity = (4*(scrollTop - (1950 - 500*projectsModif)))/1000;
+
+        $('.projects-container').css('opacity', projOpacity);
+
+        // console.log((4*(scrollTop - (1950 - 500*projectsModif)))/1000);
 
         if (scrollTop<=1950){
             top = 50;
             fontSize = 15;
-            left = (scrollTop-1400)/8;
+            left = (scrollTop-1100)/8;
             if (left > 50){left = 50;}
-
         }
 
         if (scrollTop>1500 && scrollTop<=1950){
@@ -85,6 +118,9 @@ const moveText = () => {
 
     } else if (scrollTop > 1950 && scrollTop < $(".project-3").position().top + $(".project-3").height()){
 
+        bgChange(scrollTop);
+        console.log(scrollTop);
+
         $('.contact-title').css('display', 'none');
         $('#last-proj').removeClass("last-proj-fixed");
         $('.intro-container').css('display', 'none');
@@ -94,11 +130,14 @@ const moveText = () => {
 
     } else if (scrollTop >= $(".project-3").position().top + $(".project-3").height()){
 
+        bgChange(scrollTop);
+
         $('.contact-title').css('display', 'block');
         $('.projects-handle').css('display', 'none');
         $('.intro-container').css('display', 'none');
         $('.small-intro-container').css('display', 'none');
         $('#last-proj').addClass("last-proj-fixed");
+        $('.contact-form-container').css('margin-top', '50vh');
 
         let scrollSinceProject = (scrollTop - ($(".project-3").position().top + $(".project-3").height()));
         let width;
@@ -119,7 +158,7 @@ const moveText = () => {
 
         if (width < 100){
             width = 100;
-            left = 50;
+            left = 49.5;
             top = 50;
         }
 
@@ -135,6 +174,20 @@ const moveText = () => {
             }
         } else $('.contact-page-bg').css('opacity', '0');
 
+        if (scrollSinceProject > 1400){
+            let contactTop = ((1911 - scrollSinceProject)/5)-50;
+            let contactOpacity = (100 - ((1911 - scrollSinceProject)/5))/100;
+
+            $('.contact-form-container').css({
+                'margin-top': contactTop + 'vh',
+                'opacity': contactOpacity
+            });
+
+            // console.log(contactOpacity);            
+        }
+
+
+        console.log(left);
 
         $('.contact-title').css({
             'width': width + 'vw',
@@ -153,7 +206,7 @@ const moveText = () => {
 const resizeText = () => {
     let aspectRatio = $('.intro-container').width()/$('.intro-container').height();
 
-    console.log(aspectRatio);
+    // console.log(aspectRatio);
 
     if (aspectRatio <= 2/3){
         $('.intro-thin').css('font-size', $('#small-intro-text-container').width()*0.03);
@@ -182,9 +235,96 @@ const resizeText = () => {
 }
 
 const renderModel = () => {
-    $(".model").attr({src: Model});
-    $(".model-small").attr({src: Model});
-    $(".contact-title").attr({src: Contact});
+    $(".model").attr(           {src: Model});
+    $(".model-small").attr(     {src: Model});
+    $(".draggr-logo").attr(     {src: Draggr});
+    $(".draggr-proj").attr(     {src: DraggrProj});
+    $(".twitter-proj").attr(    {src: Twitch});
+
+    $(".angular-logo").attr(    {src: Angular});
+    $(".css-logo").attr(        {src: CSS});
+    $(".es6-logo").attr(        {src: ES6});
+    $(".firebase-logo").attr(   {src: Firebase});
+    $(".git-logo").attr(        {src: Git});
+    $(".html-logo").attr(       {src: HTML});
+    $(".javascript-logo").attr( {src: JavaScript});
+    $(".json-logo").attr(       {src: JSON});
+    $(".npm-logo").attr(        {src: NPM});
+    $(".sass-logo").attr(       {src: Sass});
+    $(".typescript-logo").attr( {src: TypeScript});
+    $(".webpack-logo").attr(    {src: Webpack});
+
+    $(".contact-title").attr(   {src: Contact});
+    $(".resume").attr(          {src: Resume});
+    $(".github").attr(          {src: Github});
+    $(".linkedin").attr(        {src: Linkedin});
+}
+
+var changeFire;
+var fireCooldown = true;
+var isFired = false;
+
+const bgChange = (scrollTop) => {
+
+    // console.log(isFired);
+
+    clearTimeout(changeFire);
+    changeFire = setTimeout(() => {
+        bgScrollResponse(scrollTop);
+    }, 500);
+
+    if (!fireCooldown){
+        // clearTimeout(changeFire);
+        if (!isFired){
+            isFired = true;
+            setTimeout(() => {
+                fireCooldown = true;
+                isFired = false;
+            }, 500);
+        }
+        
+    } else if (fireCooldown){
+
+        bgScrollResponse(scrollTop);
+
+        fireCooldown = false;
+    }
+}
+
+const bgScrollResponse = (scrollTop) => {
+    if (scrollTop < 1950-0.5*$(".project-1").height()){
+
+            $('.bg').css('opacity', '0');
+
+        } else if (scrollTop < 1950+0.5*$(".project-1").height()){
+
+            console.log("green");
+
+            $('.bg').css('opacity', '0');
+            $('#green').css('opacity', '1');
+
+        } else if (scrollTop < 1950+1.5*$(".project-1").height()){
+
+            console.log("silver");
+
+            $('.bg').css('opacity', '0');
+            $('#silver').css('opacity', '1');
+
+        } else if (scrollTop < 1950+2.5*$(".project-1").height()){
+
+            console.log("purple");
+
+            $('.bg').css('opacity', '0');
+            $('#purple').css('opacity', '1');
+
+        } else if (scrollTop > 1950+2.5*$(".project-1").height()){
+
+            console.log("blue");
+
+            $('.bg').css('opacity', '0');
+            $('#blue').css('opacity', '1');
+
+        }
 }
 
 resizeText();

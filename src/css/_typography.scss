@@ -1,10 +1,12 @@
 @font-face{
 	font-family: HelvLight;
-	src: url(../assets/HELN.ttf) format('ttf');
+	src: url(HELN.ttf);
 }
 
 .intro-thin{
-	font-family: HelvLight;
+	font-family: HelvLight, sans-serif;
+	// font-weight: 10;
+
 	text-align: left;
 	margin-left: 18%;
 	font-size: 3vw;
@@ -19,7 +21,7 @@
 	font-weight: 700;
 		.text{
 			position: relative;
-			left: -10vw;
+			left: -10%;
 		}
 }
 
@@ -31,7 +33,7 @@
 	font-weight: 700;
 		.text{
 			position: relative;
-			left: 2vw;
+			left: 1%;
 		}
 }
 
@@ -41,6 +43,6 @@
 	font-size: 5vw;
 		.text{
 			position: relative;
-			left: -5vw;
+			left: -5%;
 		}
 }

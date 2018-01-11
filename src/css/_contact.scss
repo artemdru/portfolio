@@ -1,0 +1,94 @@
+.contact-form-container{
+	position: fixed;
+
+	z-index: 26;
+
+	left: 50%;
+	top: 50%;
+	
+	margin-left: -50vw;
+	margin-top: 50vh;
+	width: 100vw;
+	height: 100vh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	// font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+		.img-container{
+			position: relative;
+			display: inline-block;
+			width: 100%;
+
+			margin-bottom: 20px;
+
+				a, a:link, a:visited, a:active{
+					@include transition(0.3s all ease-in-out);
+					color: $text;
+					text-decoration: none;
+				}
+
+				a:hover{
+					@include transition(0.3s all ease-in-out);
+					opacity: 0.5;
+
+						p{
+							opacity: 0.5;
+							text-decoration: none;
+						}
+					color: $text;
+					text-decoration: none;
+				}
+
+				img{
+					height: 50px;
+				}
+
+				#resume{
+					position: absolute;
+					left: 0 !important;
+					top: 0 !important;
+				}
+
+				#linkedin{
+
+				}
+
+				#github{
+					position: absolute;
+					right: 0 !important;
+					top: 0 !important;
+				}
+		}
+
+		form{
+			width: 40vmax;
+			max-width: 100vw;
+		}
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+	font-family: HelvLight;
+	padding: 1vw;
+	font-size: 3vw;
+	font-size:calc(24px + 1vw);
+	@include transition(0.3s all ease-in-out);
+	color: $text !important;
+	border-color: $bg !important;
+    background-color: $bg !important;
+}
+
+.form-control:focus {
+  border-color: #ccc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.btn-primary:hover, .btn-primary:active{
+	@include transition(0.3s all ease-in-out);
+	background-color: #cccccc !important;
+}
+
+textarea{
+	resize: none;
+}
