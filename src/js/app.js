@@ -16,20 +16,24 @@ import NPM from '../assets/tech/npm.svg';
 import Sass from '../assets/tech/sass.svg';
 import TypeScript from '../assets/tech/typescript.svg';
 import Webpack from '../assets/tech/webpack.svg';
+import JQuery from '../assets/tech/jquery.svg';
+import Bootstrap from '../assets/tech/bootstrap.svg';
+
+import WorkInProg from '../assets/workinprogress.svg';
 
 import Contact from '../assets/contact_large.svg';
 import Resume from '../assets/resume.svg';
 import Github from '../assets/github.svg';
 import Linkedin from '../assets/linkedin.svg';
 
-// import 'bootstrap';
-// import 'bootstrap/dist/js/bootstrap.min.js';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 import './projects.js';
-import '../css/test.scss';
+import '../css/style.scss';
 
 const moveText = () => {
     let scrollTop = $('html').scrollTop();
@@ -119,7 +123,7 @@ const moveText = () => {
     } else if (scrollTop > 1950 && scrollTop < $(".project-3").position().top + $(".project-3").height()){
 
         bgChange(scrollTop);
-        console.log(scrollTop);
+        // console.log(scrollTop);
 
         $('.contact-title').css('display', 'none');
         $('#last-proj').removeClass("last-proj-fixed");
@@ -187,7 +191,7 @@ const moveText = () => {
         }
 
 
-        console.log(left);
+        // console.log(left);
 
         $('.contact-title').css({
             'width': width + 'vw',
@@ -239,7 +243,7 @@ const renderModel = () => {
     $(".model-small").attr(     {src: Model});
     $(".draggr-logo").attr(     {src: Draggr});
     $(".draggr-proj").attr(     {src: DraggrProj});
-    $(".twitter-proj").attr(    {src: Twitch});
+    $(".twitch-proj").attr(     {src: Twitch});
 
     $(".angular-logo").attr(    {src: Angular});
     $(".css-logo").attr(        {src: CSS});
@@ -253,6 +257,10 @@ const renderModel = () => {
     $(".sass-logo").attr(       {src: Sass});
     $(".typescript-logo").attr( {src: TypeScript});
     $(".webpack-logo").attr(    {src: Webpack});
+    $(".jquery-logo").attr(     {src: JQuery});
+    $(".bootstrap-logo").attr(  {src: Bootstrap});
+
+    $(".wip-icon").attr(        {src: WorkInProg});
 
     $(".contact-title").attr(   {src: Contact});
     $(".resume").attr(          {src: Resume});
@@ -332,3 +340,25 @@ renderModel();
 moveText();
 
 window.addEventListener('scroll', moveText);
+
+// Scroll user to projects when 'Sign me up' is clicked.
+$('.intro-med').click(() => {
+    $('html, body').animate({
+        scrollTop: $('.project-1').offset().top
+    }, {
+        duration: 2000,
+        // easing: 'swing',
+    });
+});
+
+
+// Display technology name on mouseover
+let techNames = [];
+$('.tech-logo-overlay').children().toArray().forEach((element, index) => {
+    techNames[index] = $(element).attr('alt');
+});
+$('.tech-logo-overlay').toArray().forEach((element, index) => {
+    let techName = document.createElement("p");
+    techName.innerHTML = techNames[index];
+    element.appendChild(techName);
+});

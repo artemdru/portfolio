@@ -22,13 +22,17 @@
 	}
 
 	a:hover{
-			p{
-				
+			p{				
 				text-decoration: none;
 			}
 
 		text-decoration: none;
 	}
+
+	.proj-name{
+		font-size: 12vmin;
+		font-weight: 700;
+	}	
 
 		.projects-handle-container{
 			height: 12vh;
@@ -45,31 +49,48 @@
 			width: 100%;
 			padding: 0;
 			margin: 0;
+
+				a{
+					@include transition(all 0.3s ease-in-out);
+					font-weight: 600;
+				}
+				
+				a:hover{
+					text-shadow: 0px 0px 12px #878787;
+					@include transition(all 0.3s ease-in-out);
+				}
 		}
 
 		.project-1{
 			@extend .project;
-			// background-color: red;
 
 				a{
 					color: #43544b !important;
-					font-weight: 600;
 				}
 		}
 		
 		.project-2{
 			@extend .project;
-			// background-color: green;			
+
+				a{
+					color: $text !important;
+				}					
 		}
 
 		.project-3{
 			@extend .project;
-			// background-color: blue;			
+
+				a{
+					color: #17141f !important;					
+				}		
 		}
 
 		.project-4{
-			@extend .project;
-			// background-color: purple;							
+			@extend .project;	
+
+				a{
+					color: $text !important;
+				}							
 		}
 
 		.last-proj-fixed{
@@ -128,7 +149,7 @@
 			width: 50vmax;
 			max-width: 100vw;
 
-			margin-top: 5vw;
+			margin-top: 15vh;
 
 			// margin: 20px;
 			// height: 70vmin;
@@ -138,7 +159,7 @@
 }
 
 #desc, #pic{
-	width: 80vmax;
+	width: 70vmax;
 	max-width: 100vw;
 	margin: 0 !important;
 	padding: 0 !important;
@@ -170,11 +191,11 @@
 			background-color: $bg;
 			position: relative;
 
-			width: 10vmax;
-			height: 10vmax;
+			width: 8vmax;
+			height: 8vmax;
 	
-			max-width: 170px;
-			max-height: 170px;
+			max-width: 157px;
+			max-height: 157px;
 
 			min-width: 70px;
 			min-height: 70px;
@@ -186,13 +207,61 @@
 			box-shadow: inset 1px 4px 9px -6px;
 
 			overflow: hidden;
+
+				p{
+					@include transition(all 0.3s ease-in-out);
+					opacity: 0;
+					position: absolute;
+					text-align: center;
+					z-index: 30;
+					font-weight: 600;
+
+					top: 50%;
+					left: 50%; 
+					transform: translate(-50%, -50%);
+					font-size:calc(7pt + 0.5vw);
+				}
 		}
 
 		.tech-logo{
+			@include transition(all 0.3s ease-in-out);
+			position: relative;
+			z-index: 2;
 			justify-content: center;
 			width: 100%;
 			
 		}
+
+		.tech-logo-overlay:hover{
+			
+			
+				p{
+					@include transition(all 0.3s ease-in-out);
+					opacity: 1;
+				}
+
+				.tech-logo{
+					@include transition(all 0.3s ease-in-out);
+					opacity: 0.1;
+				}
+		}
+}
+
+.work-in-progress{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.wip-icon{
+		height: 35vh;
+		max-height: 200px;
+	}
+
+	h1{
+		font-size: 40px;
+	}
 }
 
 

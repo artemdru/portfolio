@@ -16,6 +16,7 @@ body {
 }
 
 .bg{
+	z-index: -5;
 	opacity: 0;
 	position: fixed;
 	top: 0;
@@ -41,7 +42,7 @@ body {
 
 #blue{
 	// background: linear-gradient(to left, #61bad8 5%, #a8ffef 90%);
-	background: linear-gradient(to left, #61bad8 5%, #a8ffef 90%);
+	background: linear-gradient(to left, #71ceed 5%, #cefff6 90%);
 }
 
 .scroller{
