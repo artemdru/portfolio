@@ -5,11 +5,20 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var bootstrapEntryPoints = require('./webpack.bootstrap.config');
+
+var isProd = process.env.NODE_ENV === 'production'; //true or false
+
+var bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
+
 module.exports = {
-	entry: './src/js/app.js',
+	entry: {
+		app: './src/js/app.js',
+		bootstrap: bootstrapConfig
+	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js',
+		filename: '[name].js',
 		publicPath: '/dist'
 	},
 	module: {
@@ -26,10 +35,6 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.css$/,
-				use: ["style-loader", "css-loader"]
-			},
-			{
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: "style-loader",
@@ -40,10 +45,17 @@ module.exports = {
 				})
 			},
 			{
-				test: /\.(png|svg|jpg|gif|ttf)$/,
+				test: /\.css$/,
+				use: ["style-loader", "css-loader"]
+			},
+			{
+				test: /\.(png|svg|jpg|gif|ttf|eot)$/,
 					use: [
 					'file-loader'
 					]
+			},
+			{
+				test: /\.(woff2?)$/, loader: 'url-loader?limit=10000'
 			}
 		]
 	},

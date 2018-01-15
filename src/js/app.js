@@ -26,9 +26,9 @@ import Resume from '../assets/resume.svg';
 import Github from '../assets/github.svg';
 import Linkedin from '../assets/linkedin.svg';
 
-import 'bootstrap';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap';
+// import 'bootstrap/dist/js/bootstrap.min.js';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
