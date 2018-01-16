@@ -15,6 +15,10 @@ body {
 		}
 }
 
+.unloaded{
+	@include transition(all 0.5s ease-in-out);
+}
+
 .bg{
 	z-index: -5;
 	opacity: 0;
@@ -76,9 +80,7 @@ body {
 					right: 12%;
 
 					font-size: 5vw;
-					opacity: 0;
-					transform: translateX(10%);
-					@include transition(all 0.5s ease-in-out);
+
 					
 				}
 
@@ -117,8 +119,7 @@ body {
 						margin-bottom: -25vh;
 						width: 25vw;
 
-						opacity: 0;
-						transform: translateX(-10%);
+
 							
 					}
 
@@ -127,16 +128,13 @@ body {
 						margin-bottom: -30vh;
 						width: 40vh;
 
-						opacity: 0;
-						transform: translateX(-10%);
+
 					}
-					.unloaded-model{
-						@include transition(all 0.5s ease-in-out);
-					}
+					
 
 					.loaded{
 						opacity: 1 !important;
-						transform: translateX(0);
+						transform: translateX(0) !important;
 					}
 
 				}
@@ -156,16 +154,12 @@ body {
 
 							font-size: 5vw;
 
-							opacity: 0;
-							transform: translateX(10%);
-							@include transition(all 0.5s ease-in-out);
-
 							
 						}
 
 						.loaded{
 							opacity: 1 !important;
-							transform: translateX(0);
+							transform: translateX(0) !important;
 						}
 
 				}

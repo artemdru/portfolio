@@ -33,6 +33,20 @@ import Linkedin from '../assets/linkedin.svg';
 import './projects.js';
 import '../css/style.scss';
 
+$('.intro-text').css({
+    'opacity': '0',
+    'transform': 'translateX(10%)'
+});
+
+$('.model, .model-small').css({
+    'opacity': '0',
+    'transform': 'translateX(-10%)'
+});
+
+$('.projects-container').css('opacity', '0');
+var projectsLoaded = false;
+var projOpacity;
+
 const moveText = () => {
     let scrollTop = $('html').scrollTop();
     let aspectRatio = $('.intro-container').width()/$('.intro-container').height();
@@ -90,9 +104,11 @@ const moveText = () => {
         let left;
         let top;
         let fontSize;
-        let projOpacity = (4*(scrollTop - (1950 - 500*projectsModif)))/1000;
+        projOpacity = (4*(scrollTop - (1950 - 500*projectsModif)))/1000;
 
-        $('.projects-container').css('opacity', projOpacity);
+        if (projectsLoaded){
+            $('.projects-container').css('opacity', projOpacity);
+        }
 
         // console.log((4*(scrollTop - (1950 - 500*projectsModif)))/1000);
 
@@ -364,6 +380,7 @@ $('.tech-logo-overlay').toArray().forEach((element, index) => {
 
 $('.model').on('load', () => {
     moveText();
+    $('.intro-text').toggleClass('unloaded');
     $('.intro-text').toggleClass('loaded');
 
 
@@ -373,13 +390,25 @@ $('.model').on('load', () => {
     // Remove transition from model after loaded
     // Or else it will be wonky on scrolling
     setTimeout(() => {
-        $('.model').toggleClass('unloaded-model');
-        $('.model-small').toggleClass('unloaded-model');
+        $('.model').toggleClass('unloaded');
+        $('.model-small').toggleClass('unloaded');
     }, 500);
 });
 
 $('.projects-container').ready(() => {
     console.log("we got projects");
+
+    projectsLoaded = true;
+
+    let targetOpacity = 1;
+
+    if (projOpacity){
+        targetOpacity = projOpacity;
+    }
+
+    $('.projects-container').animate({
+        opacity: targetOpacity
+    }, 500);
 });
 
 
