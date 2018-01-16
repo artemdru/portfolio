@@ -1,4 +1,4 @@
-import 'flickity';
+// import 'flickity';
 import 'flickity/dist/flickity.min.css';
 import 'flickity/dist/flickity.pkgd.min.js';
 
@@ -8,7 +8,7 @@ let carouselElems = document.querySelectorAll('.carousel');
 
 for (let i=0, len = carouselElems.length; i< len; i++){
 	var carouselElem = carouselElems[i];
-	new Flickity(carouselElem, {
+	var thisFlick = new Flickity(carouselElem, {
 
 	    accessibility: true,
 	    cellAlign: 'left',

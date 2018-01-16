@@ -1,15 +1,17 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-// var ReloadPlugin = require('reload-html-webpack-plugin');
-var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const ReloadPlugin = require('reload-html-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const bootstrapEntryPoints = require('./webpack.bootstrap.config');
+const glob = require('glob');
+const PurifyCSSPlugin = require('purifycss-webpack');
 
-var bootstrapEntryPoints = require('./webpack.bootstrap.config');
 
-var isProd = process.env.NODE_ENV === 'production'; //true or false
+const isProd = process.env.NODE_ENV === 'production'; //true or false
+const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
 
-var bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
 
 module.exports = {
 	entry: {
@@ -17,9 +19,8 @@ module.exports = {
 		bootstrap: bootstrapConfig
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve('dist'),
 		filename: '[name].js',
-		publicPath: '/dist'
 	},
 	module: {
 		rules: [
@@ -35,7 +36,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.scss$/,
+				test: /\.(css|scss)$/,
 				use: ExtractTextPlugin.extract({
 					fallback: "style-loader",
 					use: [
@@ -43,10 +44,6 @@ module.exports = {
 						"sass-loader",
 						],
 				})
-			},
-			{
-				test: /\.css$/,
-				use: ["style-loader", "css-loader"]
 			},
 			{
 				test: /\.(png|svg|jpg|gif|ttf|eot)$/,
@@ -59,12 +56,6 @@ module.exports = {
 			}
 		]
 	},
-	devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        stats: "errors-only",
-        open: true
-    },
 	plugins: [
 		new webpack.ProvidePlugin({
 			$: 'jquery',
@@ -77,12 +68,18 @@ module.exports = {
         	Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
 		}),
 		new HtmlWebpackPlugin({
-			alwaysWriteToDisk: true,
-	      	title: 'Custom template',
+			// alwaysWriteToDisk: true,
+	      	// title: 'Custom template',
 	      	template: './src/index.html',
 	    }),
 		new ExtractTextPlugin('style.css'),
 		// new ReloadPlugin(),
+		new PurifyCSSPlugin({
+			paths: glob.sync(path.join(__dirname, 'src/*.html')),
+			purifyOptions: {
+				whitelist: ['*flickity*', 'last-proj-fixed', 'loaded']
+			}
+	    }),
 		new HtmlWebpackHarddiskPlugin()
 	]
 };

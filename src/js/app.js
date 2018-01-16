@@ -30,8 +30,6 @@ import Linkedin from '../assets/linkedin.svg';
 // import 'bootstrap/dist/js/bootstrap.min.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
 import './projects.js';
 import '../css/style.scss';
 
@@ -362,3 +360,34 @@ $('.tech-logo-overlay').toArray().forEach((element, index) => {
     techName.innerHTML = techNames[index];
     element.appendChild(techName);
 });
+
+
+$('.model').on('load', () => {
+    moveText();
+    $('.intro-text').toggleClass('loaded');
+
+
+    $('.model').toggleClass('loaded');
+    $('.model-small').toggleClass('loaded');
+
+    // Remove transition from model after loaded
+    // Or else it will be wonky on scrolling
+    setTimeout(() => {
+        $('.model').toggleClass('unloaded-model');
+        $('.model-small').toggleClass('unloaded-model');
+    }, 500);
+});
+
+$('.projects-container').ready(() => {
+    console.log("we got projects");
+});
+
+
+/*
+    TODO:
+    Set opacity of intro to 0 in javascript
+    Add unloaded class to intro text (with transition) on img load
+
+    Set opacity of projects to 0 in javascript
+    Viewable projects after projects-container ready
+*/
