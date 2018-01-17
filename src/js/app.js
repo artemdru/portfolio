@@ -30,229 +30,34 @@ import Linkedin from '../assets/linkedin.svg';
 // import 'bootstrap/dist/js/bootstrap.min.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {scrollMove, resizeText} from './scroll.js';
+import {bgChange, bgScrollResponse} from './background.js';
+
+
 import './projects.js';
 import '../css/style.scss';
 
-$('.intro-text').css({
-    'opacity': '0',
-    'transform': 'translateX(10%)'
-});
+const Test = () => {
+    alert("Testing");
+}
 
-$('.model, .model-small').css({
-    'opacity': '0',
-    'transform': 'translateX(-10%)'
-});
+// $('.intro-text').css({
+//     'opacity': '0',
+//     'transform': 'translateX(10%)'
+// });
+
+// $('.model, .model-small').css({
+//     'opacity': '0',
+//     'transform': 'translateX(-10%)'
+// });
 
 $('.projects-container').css('opacity', '0');
 var projectsLoaded = false;
 var projOpacity;
 
-const moveText = () => {
-    let scrollTop = $('html').scrollTop();
-    let aspectRatio = $('.intro-container').width()/$('.intro-container').height();
-    let projectsModif = 1;
 
-    if (aspectRatio > 2/3 && aspectRatio < 4/3){projectsModif = 1.5};
-
-    if (scrollTop < 500*projectsModif){
-        $('.contact-title').css('display', 'none');
-        $('.contact-page-bg').css('opacity', '0');
-        $('.intro-container').css('display', 'block');        
-        $('.small-intro-container').css('display', 'block');
-        $('.projects-title').css('display', 'none');
-        $('.projects-title').css('left', '-50%');
-        $('.projects-handle').css('display', 'none');
-
-        let newScale = 100+ scrollTop/1.2;
-        let newPos = -1*(newScale/2);
-
-        $('.intro-container').css({
-            'width': newScale+'vw', 
-            'height': newScale+'vh',
-            'margin-left': newPos+'vw',
-            'margin-top': newPos+'vh'
-        });
-
-        $('.small-intro-container').css({
-            'width': newScale*1.5+'vw', 
-            'height': newScale*1.5+'vh',
-            // 'margin-left': newPos*1.5+'vw',
-            'margin-top': newPos*1.5+'vh',
-        });
-
-        resizeText();
-
-        //TODO: Optimize for 4k
-        // if ($(window).width() > 1950 && scrollTop > 650){
-        //     $('.intro-container').css('display', 'none');
-        // }
-
-        $('.model').css('width', (25 + scrollTop/10) + 'vw');
-        $('.model-small').css('width', (40 + scrollTop/10) + 'vh'); 
-
-    } else if (scrollTop > 500*projectsModif && scrollTop <= 1950){
-
-        bgChange(scrollTop);
-
-        $('.contact-title').css('display', 'none');
-        $('.contact-page-bg').css('opacity', '0');
-        $('.projects-title').css('display', 'block');
-        $('.projects-handle').css('display', 'none');
-        $('.intro-container').css('display', 'none');
-        $('.small-intro-container').css('display', 'none');
-
-        let left;
-        let top;
-        let fontSize;
-        projOpacity = (4*(scrollTop - (1950 - 500*projectsModif)))/1000;
-
-        if (projectsLoaded){
-            $('.projects-container').css('opacity', projOpacity);
-        }
-
-        // console.log((4*(scrollTop - (1950 - 500*projectsModif)))/1000);
-
-        if (scrollTop<=1950){
-            top = 50;
-            fontSize = 15;
-            left = (scrollTop-1100)/8;
-            if (left > 50){left = 50;}
-        }
-
-        if (scrollTop>1500 && scrollTop<=1950){
-            top = 50-(scrollTop-1500)/8;
-            fontSize = 15-(scrollTop-1500)/24;
-
-            if (fontSize < 5){
-                fontSize = 5;
-            }
-        }
-
-        $('.projects-title').css({
-            'left': left + '%',
-            'top': top + '%',
-            'font-size': fontSize + 'vmax',
-        });
-
-    } else if (scrollTop > 1950 && scrollTop < $(".project-3").position().top + $(".project-3").height()){
-
-        bgChange(scrollTop);
-        // console.log(scrollTop);
-
-        $('.contact-title').css('display', 'none');
-        $('#last-proj').removeClass("last-proj-fixed");
-        $('.intro-container').css('display', 'none');
-        $('.small-intro-container').css('display', 'none');
-        $('.projects-title').css('display', 'none');
-        // $('.projects-handle').css('display', 'block');
-
-    } else if (scrollTop >= $(".project-3").position().top + $(".project-3").height()){
-
-        bgChange(scrollTop);
-
-        $('.contact-title').css('display', 'block');
-        $('.projects-handle').css('display', 'none');
-        $('.intro-container').css('display', 'none');
-        $('.small-intro-container').css('display', 'none');
-        $('#last-proj').addClass("last-proj-fixed");
-        $('.contact-form-container').css('margin-top', '50vh');
-
-        let scrollSinceProject = (scrollTop - ($(".project-3").position().top + $(".project-3").height()));
-        let width;
-        let left;
-        let top;
-        let aspectModif = 1.7/Math.pow(($(window).width()/$(window).height()), 3.5);
-
-
-        width = 6400 - scrollSinceProject*(5+(100*(1/scrollSinceProject)));
-        left = 0.07241*width + scrollSinceProject/27;
-        top = aspectModif + scrollSinceProject/23;
-
-        if (scrollSinceProject < 300){
-            aspectModif -= 9;
-            // width = 6400;
-        };
-
-
-        if (width < 100){
-            width = 100;
-            left = 49.5;
-            top = 50;
-        }
-
-       
-
-        if (scrollSinceProject > 1000){
-            $('.contact-page-bg').css('opacity', '1');
-            top = 85 - scrollSinceProject/25;
-            if (top > 50) {
-                top = 50;
-            } else if (top < 12){
-                top = 12;
-            }
-        } else $('.contact-page-bg').css('opacity', '0');
-
-        if (scrollSinceProject > 1400){
-            let contactTop = ((1911 - scrollSinceProject)/5)-50;
-            let contactOpacity = (100 - ((1911 - scrollSinceProject)/5))/100;
-
-            $('.contact-form-container').css({
-                'margin-top': contactTop + 'vh',
-                'opacity': contactOpacity
-            });
-
-            // console.log(contactOpacity);            
-        }
-
-
-        // console.log(left);
-
-        $('.contact-title').css({
-            'width': width + 'vw',
-            'left': left + 'vw',
-            'top': top + '%',
-        });
-    }
-
-     
-}
-
-// Check aspect ratio, boost font size by 25 if narrow ratio.
-// Otherwise, since text is based on width of containing element,
-// it would be too small for narrower aspect ratios.
-// Smaller font size for extra wide aspect ratios.
-const resizeText = () => {
-    let aspectRatio = $('.intro-container').width()/$('.intro-container').height();
-
-    // console.log(aspectRatio);
-
-    if (aspectRatio <= 2/3){
-        $('.intro-thin').css('font-size', $('#small-intro-text-container').width()*0.03);
-        $('.intro-med').css('font-size', $('#small-intro-text-container').width()*0.06);
-        $('.intro-artem').css('font-size', $('#small-intro-text-container').width()*0.08);
-        $('.intro-druzhkov').css('font-size', $('#small-intro-text-container').width()*0.08);
-
-    } else if (aspectRatio > 2/3 && aspectRatio < 1.35) {
-        $('.intro-thin').css('font-size', $('#small-intro-text-container').width()*0.025);
-        $('.intro-med').css('font-size', $('#small-intro-text-container').width()*0.035);
-        $('.intro-artem').css('font-size', $('#small-intro-text-container').width()*0.04);
-        $('.intro-druzhkov').css('font-size', $('#small-intro-text-container').width()*0.04);
-
-    } else if (aspectRatio > 2.2){
-        $('.intro-thin').css('font-size', $('#intro-text-container').width()*0.03);
-        $('.intro-med').css('font-size', $('#intro-text-container').width()*0.05);
-        $('.intro-artem').css('font-size', $('#intro-text-container').width()*0.06);
-        $('.intro-druzhkov').css('font-size', $('#intro-text-container').width()*0.06);
-        
-    } else {
-        $('.intro-thin').css('font-size', $('#intro-text-container').width()*0.06);
-        $('.intro-med').css('font-size', $('#intro-text-container').width()*0.1);
-        $('.intro-artem').css('font-size', $('#intro-text-container').width()*0.12);
-        $('.intro-druzhkov').css('font-size', $('#intro-text-container').width()*0.12);
-    }
-}
-
-const renderModel = () => {
+// Attach src to images in index.html
+const srcImages = () => {
     $(".model").attr(           {src: Model});
     $(".model-small").attr(     {src: Model});
     $(".draggr-logo").attr(     {src: Draggr});
@@ -282,78 +87,49 @@ const renderModel = () => {
     $(".linkedin").attr(        {src: Linkedin});
 }
 
-var changeFire;
-var fireCooldown = true;
-var isFired = false;
 
-const bgChange = (scrollTop) => {
+// Check if opened on mobile device
+var isMobile;
+window.mobilecheck = function() {
+  isMobile = false;
+  (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) isMobile = true;})(navigator.userAgent||navigator.vendor||window.opera);
+  if (isMobile){}
+};
+mobilecheck();
 
-    // console.log(isFired);
+srcImages();
+// Use onscroll features if not on mobile
+if (!isMobile){
+    $('.mobile-intro, .mobile').css('display', 'none');
 
-    clearTimeout(changeFire);
-    changeFire = setTimeout(() => {
-        bgScrollResponse(scrollTop);
-    }, 500);
+    $('.desktop-intro, .intro-placeholder, .scroller, .contact-title, .desktop').css('display', 'block');
 
-    if (!fireCooldown){
-        // clearTimeout(changeFire);
-        if (!isFired){
-            isFired = true;
-            setTimeout(() => {
-                fireCooldown = true;
-                isFired = false;
-            }, 500);
-        }
-        
-    } else if (fireCooldown){
+    resizeText();
+    scrollMove();
+    window.addEventListener('scroll', scrollMove);
+    window.addEventListener('resize', scrollMove);
 
-        bgScrollResponse(scrollTop);
 
-        fireCooldown = false;
-    }
+    // Show intro after model has loaded
+    $('.model').on('load', () => {
+        scrollMove();
+        $('.intro-text').toggleClass('unloaded');
+        $('.intro-text').toggleClass('loaded');
+
+
+        $('.model').toggleClass('loaded');
+        $('.model-small').toggleClass('loaded');
+
+        // Remove transition from model after loaded
+        // Or else it will be wonky on scrolling
+        setTimeout(() => {
+            $('.model').toggleClass('unloaded');
+            $('.model-small').toggleClass('unloaded');
+        }, 500);
+    });
 }
 
-const bgScrollResponse = (scrollTop) => {
-    if (scrollTop < 1950-0.5*$(".project-1").height()){
 
-            $('.bg').css('opacity', '0');
-
-        } else if (scrollTop < 1950+0.5*$(".project-1").height()){
-
-            console.log("green");
-
-            $('.bg').css('opacity', '0');
-            $('#green').css('opacity', '1');
-
-        } else if (scrollTop < 1950+1.5*$(".project-1").height()){
-
-            console.log("silver");
-
-            $('.bg').css('opacity', '0');
-            $('#silver').css('opacity', '1');
-
-        } else if (scrollTop < 1950+2.5*$(".project-1").height()){
-
-            console.log("purple");
-
-            $('.bg').css('opacity', '0');
-            $('#purple').css('opacity', '1');
-
-        } else if (scrollTop > 1950+2.5*$(".project-1").height()){
-
-            console.log("blue");
-
-            $('.bg').css('opacity', '0');
-            $('#blue').css('opacity', '1');
-
-        }
-}
-
-resizeText();
-renderModel();
-moveText();
-
-window.addEventListener('scroll', moveText);
 
 // Scroll user to projects when 'Sign me up' is clicked.
 $('.intro-med').click(() => {
@@ -378,23 +154,9 @@ $('.tech-logo-overlay').toArray().forEach((element, index) => {
 });
 
 
-$('.model').on('load', () => {
-    moveText();
-    $('.intro-text').toggleClass('unloaded');
-    $('.intro-text').toggleClass('loaded');
 
 
-    $('.model').toggleClass('loaded');
-    $('.model-small').toggleClass('loaded');
-
-    // Remove transition from model after loaded
-    // Or else it will be wonky on scrolling
-    setTimeout(() => {
-        $('.model').toggleClass('unloaded');
-        $('.model-small').toggleClass('unloaded');
-    }, 500);
-});
-
+// Show projects after projects have loaded
 $('.projects-container').ready(() => {
     console.log("we got projects");
 
@@ -410,13 +172,3 @@ $('.projects-container').ready(() => {
         opacity: targetOpacity
     }, 500);
 });
-
-
-/*
-    TODO:
-    Set opacity of intro to 0 in javascript
-    Add unloaded class to intro text (with transition) on img load
-
-    Set opacity of projects to 0 in javascript
-    Viewable projects after projects-container ready
-*/

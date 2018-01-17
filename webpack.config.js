@@ -71,6 +71,7 @@ module.exports = {
 			// alwaysWriteToDisk: true,
 	      	// title: 'Custom template',
 	      	template: './src/index.html',
+	      	favicon: './src/assets/favicon.png'
 	    }),
 		new ExtractTextPlugin('style.css'),
 		// new ReloadPlugin(),

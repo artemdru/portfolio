@@ -11,7 +11,7 @@
 	p{
 		font-family: HelvLight, sans-serif;
 		color: $text;
-		font-size:calc(10pt + 0.5vw);
+		font-size:calc(7pt + 0.7vw);
 		text-align: left;
 	}
 
@@ -40,7 +40,7 @@
 			height: 12vh;
 
 				.projects-handle{
-					font-size: 5vmax;
+					font-size: 10vmax;
 					top: -4.5%;
 				}
 		}
@@ -199,8 +199,8 @@
 			max-width: 157px;
 			max-height: 157px;
 
-			min-width: 70px;
-			min-height: 70px;
+			// min-width: 70px;
+			// min-height: 70px;
 
 
 			margin: 20px;
@@ -209,6 +209,7 @@
 			box-shadow: inset 1px 4px 9px -6px;
 
 			overflow: hidden;
+			// opacity: 1 !important;
 
 				p{
 					@include transition(all 0.3s ease-in-out);

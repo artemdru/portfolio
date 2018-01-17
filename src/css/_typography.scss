@@ -3,7 +3,8 @@
 	src: url(HELN.ttf);
 }
 
-.intro-thin{
+#small-intro-text-container, #intro-text-container{
+	.intro-thin{
 	font-family: HelvLight, sans-serif;
 	// font-weight: 10;
 
@@ -11,39 +12,87 @@
 	margin-left: 18%;
 	font-size: 3vw;
 	line-height: 90%;
+	}
+
+	.intro-artem{
+		text-align: left;
+		margin-left: 18%;
+		font-size: 6vw;
+		line-height: 70%;
+		font-weight: 700;
+			.text{
+				position: relative;
+				left: -10%;
+			}
+	}
+
+	.intro-druzhkov{
+		text-align: left;
+		margin-left: 18%;
+		font-size: 6vw;
+		line-height: 75%;
+		font-weight: 700;
+			.text{
+				position: relative;
+				left: 1%;
+			}
+	}
+
+	.intro-med{
+		cursor: pointer;
+		text-align: left;
+		margin-left: 18%;
+		font-size: 5vw;
+			.text{
+				position: relative;
+				left: -5%;
+			}
+	}
 }
 
-.intro-artem{
-	text-align: left;
-	margin-left: 18%;
-	font-size: 6vw;
-	line-height: 70%;
-	font-weight: 700;
-		.text{
-			position: relative;
-			left: -10%;
-		}
-}
 
-.intro-druzhkov{
-	text-align: left;
-	margin-left: 18%;
-	font-size: 6vw;
-	line-height: 75%;
-	font-weight: 700;
-		.text{
-			position: relative;
-			left: 1%;
-		}
-}
+#mobile-intro-text-container{
+	.intro-thin{
+		font-family: HelvLight, sans-serif;
 
-.intro-med{
-	cursor: pointer;
-	text-align: left;
-	margin-left: 18%;
-	font-size: 5vw;
-		.text{
-			position: relative;
-			left: -5%;
-		}
+		text-align: center;
+		margin-left: 18%;
+		font-size: 7vw;
+		line-height: 90%;
+	}
+
+	.intro-artem{
+		text-align: center;
+		margin-left: 18%;
+		font-size: 13vw;
+		line-height: 70%;
+		font-weight: 700;
+			.text{
+				position: relative;
+				left: -25%;
+			}
+	}
+
+	.intro-druzhkov{
+		text-align: center;
+		margin-left: 18%;
+		font-size: 13vw;
+		line-height: 75%;
+		font-weight: 700;
+			.text{
+				position: relative;
+				left: 1%;
+			}
+	}
+
+	.intro-med{
+		cursor: pointer;
+		text-align: center;
+		margin-left: 18%;
+		font-size: 9vw;
+			.text{
+				position: relative;
+				left: -5%;
+			}
+	}
 }

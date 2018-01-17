@@ -86,10 +86,39 @@ body {
 
 				.loaded{
 					opacity: 1 !important;
-					transform: translateX(0);
+					transform: translateX(0) !important;
 				}
 		}
 }
+
+.mobile-intro-container{
+	width: 100vw;
+	height: 100vh;
+
+		#mobile-intro-text-container{
+			height: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+				.intro-text{
+					display: block;
+					text-align: left;
+					right: 12%;
+
+					font-size: 5vw;
+
+					
+				}
+
+				.loaded{
+					opacity: 1 !important;
+					transform: translateX(0) !important;
+				}
+		}
+}
+
 
 .intro-container{
 	position: fixed;
