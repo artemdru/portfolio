@@ -102,7 +102,8 @@ srcImages();
 if (!isMobile){
     $('.mobile-intro, .mobile').css('display', 'none');
 
-    $('.desktop-intro, .intro-placeholder, .scroller, .contact-title, .desktop').css('display', 'block');
+    $('.desktop-intro, .intro-placeholder, .scroller, .contact-title').css('display', 'block');
+    $('.desktop').css('display', 'flex');
 
     resizeText();
     scrollMove();
